@@ -211,6 +211,20 @@ body.unhinged main {
   opacity: 0.9;
 }
 
+/* Varied banana sizes */
+.banana.size-xs { font-size: 1rem; }
+.banana.size-sm { font-size: 1.25rem; }
+.banana.size-md { font-size: 1.6rem; }
+.banana.size-lg { font-size: 2.1rem; }
+.banana.size-xl { font-size: 2.6rem; }
+
+/* Wall banana sizes for inline grid items */
+.banana-wall-grid span.size-xs { font-size: 1.1rem; }
+.banana-wall-grid span.size-sm { font-size: 1.35rem; }
+.banana-wall-grid span.size-md { font-size: 1.7rem; }
+.banana-wall-grid span.size-lg { font-size: 2.2rem; }
+.banana-wall-grid span.size-xl { font-size: 2.8rem; }
+
 @keyframes float {
   0% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-8px) rotate(6deg); }

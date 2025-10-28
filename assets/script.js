@@ -17,8 +17,19 @@
   let unhinged = false;
   let lastTrailTime = 0;
 
+  const sizes = ["size-xs", "size-sm", "size-md", "size-lg", "size-xl"];
+
   function random(min, max) {
     return Math.random() * (max - min) + min;
+  }
+  function pickSize() {
+    // Weight toward medium/large for visual balance
+    const r = Math.random();
+    if (r < 0.12) return sizes[0];      // xs
+    if (r < 0.35) return sizes[1];      // sm
+    if (r < 0.70) return sizes[2];      // md
+    if (r < 0.92) return sizes[3];      // lg
+    return sizes[4];                    // xl
   }
 
   function incrementCount(n) {
@@ -26,14 +37,14 @@
     if (countEl) countEl.textContent = String(totalBananas);
   }
 
-  // Animated sprinkle bananas across the page
+  // Animated sprinkle bananas across the page with varied sizes
   function addBananas(count = 16) {
     if (!sprinkleContainer) return;
     const { width, height } = sprinkleContainer.getBoundingClientRect();
 
     for (let i = 0; i < count; i++) {
       const span = document.createElement("span");
-      span.className = "banana";
+      span.className = `banana ${pickSize()}`;
       span.textContent = "🍌";
 
       // Random position in container
@@ -43,7 +54,7 @@
       span.style.top = `${top}px`;
 
       // Randomized animation timing
-      span.style.animationDuration = `${random(3.5, 8)}s`;
+      span.style.animationDuration = `${random(3.2, 8)}s`;
       span.style.animationDelay = `${random(0, 2.5)}s`;
       span.style.opacity = `${random(0.6, 1)}`;
 
@@ -59,7 +70,7 @@
     }
   }
 
-  // Banana Wall: create a large grid of bananas
+  // Banana Wall: create a large grid of bananas with varied sizes
   function populateBananaWall(count = 120) {
     if (!wall) return;
 
@@ -67,6 +78,7 @@
     for (let i = 0; i < count; i++) {
       const s = document.createElement("span");
       s.textContent = "🍌";
+      s.className = pickSize();
       frag.appendChild(s);
     }
     wall.appendChild(frag);
@@ -92,7 +104,7 @@
     }
   }
 
-  // Mouse banana trail when unhinged
+  // Mouse banana trail when unhinged with varied sizes
   window.addEventListener("mousemove", (e) => {
     if (!unhinged || !sprinkleContainer) return;
     const now = performance.now();
@@ -100,7 +112,7 @@
     lastTrailTime = now;
 
     const span = document.createElement("span");
-    span.className = "banana";
+    span.className = `banana ${pickSize()}`;
     span.textContent = "🍌";
     span.style.left = `${e.clientX - 10}px`;
     span.style.top = `${e.clientY - 10}px`;
