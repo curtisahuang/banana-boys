@@ -1,15 +1,19 @@
-// Banana sprinkles and "Add more bananas" interaction
+// Banana sprinkles, gallery interactions, and Banana Wall
 (function () {
   console.log("Banana site loaded!");
 
   const sprinkleContainer = document.querySelector(".banana-sprinkles");
   const addBtn = document.getElementById("add-bananas");
 
+  const wall = document.getElementById("banana-wall");
+  const loadMoreBtn = document.getElementById("load-more-bananas");
+
   function random(min, max) {
     return Math.random() * (max - min) + min;
   }
 
-  function addBananas(count = 12) {
+  // Animated sprinkle bananas across the page
+  function addBananas(count = 16) {
     if (!sprinkleContainer) return;
     const { width, height } = sprinkleContainer.getBoundingClientRect();
 
@@ -31,7 +35,7 @@
 
       sprinkleContainer.appendChild(span);
 
-      // Optional cleanup after some time to avoid too many nodes
+      // Cleanup to avoid too many nodes over time
       setTimeout(() => {
         if (span.parentNode === sprinkleContainer) {
           sprinkleContainer.removeChild(span);
@@ -40,11 +44,33 @@
     }
   }
 
+  // Banana Wall: create a large grid of bananas
+  function populateBananaWall(count = 120) {
+    if (!wall) return;
+
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < count; i++) {
+      const s = document.createElement("span");
+      s.textContent = "🍌";
+      frag.appendChild(s);
+    }
+    wall.appendChild(frag);
+  }
+
   // Initial bananas for fun
-  addBananas(18);
+  addBananas(30);              // more sprinkles to start
+  populateBananaWall(160);     // a bigger initial banana wall
 
   // Add more on button click
   if (addBtn) {
-    addBtn.addEventListener("click", () => addBananas(20));
+    addBtn.addEventListener("click", () => addBananas(24));
   }
+
+  // Load more bananas into the wall
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener("click", () => populateBananaWall(200));
+  }
+
+  // Periodically add sprinkles for continuous fun
+  setInterval(() => addBananas(12), 3500);
 })();
