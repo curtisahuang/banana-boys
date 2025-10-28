@@ -15,6 +15,26 @@ body {
   /* allow natural page scrolling */
 }
 
+/* Giant background banana */
+body::before {
+  content: "🍌";
+  position: fixed;
+  right: -6vw;
+  top: 8vh;
+  font-size: clamp(220px, 38vw, 720px);
+  opacity: 0.08;
+  transform: rotate(-20deg);
+  pointer-events: none;
+  z-index: 0;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.06));
+}
+
+/* keep main content above the background banana */
+main, header, footer, .banana-sprinkles {
+  position: relative;
+  z-index: 1;
+}
+
 header {
   background: #23272f;
   color: #fff;
