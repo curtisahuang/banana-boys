@@ -1,0 +1,38 @@
+directory_tree tool specification
+
+Overview
+- Purpose: Display the structure and contents of a directory as a tree.
+- Input: JSON parameters { "query": string } where "query" is the path to list (e.g., ".", "assets/").
+- Output: A tree of folders and files for the given path.
+
+Parameters
+- query: string
+  - The directory path (absolute or project-relative) to inspect.
+  - Examples:
+    - "."
+    - "assets/"
+    - "src/components"
+
+Return format (typical)
+{
+  "fsDirectory": {
+    "output": " path/\n   subpath/\n     fileA\n     fileB\n   fileC\n"
+  }
+}
+- The "output" is a human-readable tree; indentation reflects nested structure.
+- Some implementations may include additional fields like "id" for tracing.
+
+Usage patterns
+- Get an overview of project layout quickly.
+- Check naming conventions and file types before adding new files.
+- Verify the presence of expected files or directories.
+- Combine with read_file to inspect actual contents of specific files.
+
+Best practices
+- Use directory_tree before adding files to ensure you follow existing structure and naming patterns.
+- If the directory is large, consider listing a subpath (e.g., "assets/") for clarity.
+- For detailed content inspection, follow up with read_file on specific files.
+
+Notes
+- The tool is read-only; it does not modify the filesystem.
+- Paths are scoped to the active project/workspace; it cannot list outside of authorized directories.
