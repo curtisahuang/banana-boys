@@ -27,6 +27,14 @@ body::before {
   pointer-events: none;
   z-index: 0;
   filter: drop-shadow(0 12px 22px rgba(0,0,0,0.08));
+  animation: giant-banana-rock 28s ease-in-out infinite;
+}
+
+/* Gentle rotation for the giant background banana */
+@keyframes giant-banana-rock {
+  0%   { transform: translateX(-50%) rotate(-26deg); }
+  50%  { transform: translateX(-50%) rotate(18deg); }
+  100% { transform: translateX(-50%) rotate(-26deg); }
 }
 
 /* keep main content above the background banana */
