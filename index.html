@@ -10,6 +10,7 @@
 <body>
   <header>
     <div class="brand">🍌 Bananas</div>
+    <div class="banana-counter" aria-live="polite">Total bananas: <span id="banana-count">0</span></div>
   </header>
 
   <main>
@@ -17,6 +18,12 @@
       <h1>Bananas: sweet, portable, and full of goodness</h1>
       <p>Explore varieties, nutrition, ripeness tips, and simple ways to enjoy bananas every day.</p>
       <a class="cta" href="#recipes">See easy recipes</a>
+    </section>
+
+    <section class="controls card">
+      <h2>Unhinged Banana Mode</h2>
+      <p>Turn the obsession up to 11. Expect lots of bananas.</p>
+      <button id="toggle-unhinged" class="cta" type="button" aria-pressed="false">Activate Unhinged Mode</button>
     </section>
 
     <section class="grid">
@@ -89,6 +96,17 @@
       <div id="banana-wall" class="banana-wall-grid" aria-live="polite"></div>
       <div class="banana-wall-actions">
         <button id="load-more-bananas" class="cta" type="button" aria-label="Load more bananas">Load more bananas</button>
+      </div>
+    </section>
+
+    <section class="banana-marquee" aria-hidden="false" aria-label="Scrolling banana facts">
+      <div class="marquee-track">
+        <span>🍌 Bananas are berries.</span>
+        <span>🍌 Banana peels can be composted.</span>
+        <span>🍌 Ripe bananas sweeten smoothies naturally.</span>
+        <span>🍌 Plantains are bananas better cooked.</span>
+        <span>🍌 Freeze speckled bananas for baking.</span>
+        <span>🍌 Konami code unleashes a banana storm.</span>
       </div>
     </section>
 

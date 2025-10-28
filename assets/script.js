@@ -1,15 +1,29 @@
-// Banana sprinkles, gallery interactions, and Banana Wall
+// Unhinged banana obsession: sprinkles, wall, marquee and interactions
 (function () {
   console.log("Banana site loaded!");
 
+  const body = document.body;
   const sprinkleContainer = document.querySelector(".banana-sprinkles");
   const addBtn = document.getElementById("add-bananas");
 
   const wall = document.getElementById("banana-wall");
   const loadMoreBtn = document.getElementById("load-more-bananas");
 
+  const toggleUnhingedBtn = document.getElementById("toggle-unhinged");
+  const countEl = document.getElementById("banana-count");
+
+  let totalBananas = 0;
+  let sprinkleInterval = null;
+  let unhinged = false;
+  let lastTrailTime = 0;
+
   function random(min, max) {
     return Math.random() * (max - min) + min;
+  }
+
+  function incrementCount(n) {
+    totalBananas += n;
+    if (countEl) countEl.textContent = String(totalBananas);
   }
 
   // Animated sprinkle bananas across the page
@@ -29,18 +43,19 @@
       span.style.top = `${top}px`;
 
       // Randomized animation timing
-      span.style.animationDuration = `${random(4, 9)}s`;
-      span.style.animationDelay = `${random(0, 3)}s`;
+      span.style.animationDuration = `${random(3.5, 8)}s`;
+      span.style.animationDelay = `${random(0, 2.5)}s`;
       span.style.opacity = `${random(0.6, 1)}`;
 
       sprinkleContainer.appendChild(span);
+      incrementCount(1);
 
       // Cleanup to avoid too many nodes over time
       setTimeout(() => {
         if (span.parentNode === sprinkleContainer) {
           sprinkleContainer.removeChild(span);
         }
-      }, 20000 + Math.floor(random(0, 10000))); // 20–30s
+      }, 20000 + Math.floor(random(0, 12000))); // 20–32s
     }
   }
 
@@ -55,22 +70,83 @@
       frag.appendChild(s);
     }
     wall.appendChild(frag);
+    incrementCount(count);
   }
+
+  // Toggle unhinged mode
+  function setUnhinged(enabled) {
+    unhinged = enabled;
+    body.classList.toggle("unhinged", enabled);
+    if (toggleUnhingedBtn) {
+      toggleUnhingedBtn.textContent = enabled ? "Deactivate Unhinged Mode" : "Activate Unhinged Mode";
+      toggleUnhingedBtn.setAttribute("aria-pressed", String(enabled));
+    }
+    // Manage sprinkle cadence
+    if (sprinkleInterval) clearInterval(sprinkleInterval);
+    sprinkleInterval = setInterval(() => addBananas(enabled ? 20 : 10), enabled ? 2200 : 4200);
+
+    // Immediate burst when enabling
+    if (enabled) {
+      addBananas(40);
+      populateBananaWall(240);
+    }
+  }
+
+  // Mouse banana trail when unhinged
+  window.addEventListener("mousemove", (e) => {
+    if (!unhinged || !sprinkleContainer) return;
+    const now = performance.now();
+    if (now - lastTrailTime < 60) return; // throttle
+    lastTrailTime = now;
+
+    const span = document.createElement("span");
+    span.className = "banana";
+    span.textContent = "🍌";
+    span.style.left = `${e.clientX - 10}px`;
+    span.style.top = `${e.clientY - 10}px`;
+    span.style.position = "fixed";
+    span.style.opacity = "0.85";
+    span.style.animationDuration = "4s";
+
+    sprinkleContainer.appendChild(span);
+    incrementCount(1);
+
+    setTimeout(() => {
+      if (span.parentNode === sprinkleContainer) {
+        sprinkleContainer.removeChild(span);
+      }
+    }, 8000);
+  });
+
+  // Konami code triggers a banana storm
+  const konami = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+  let buffer = [];
+  window.addEventListener("keydown", (e) => {
+    buffer.push(e.key);
+    if (buffer.length > konami.length) buffer.shift();
+    if (konami.every((k, i) => buffer[i] === k)) {
+      addBananas(120);
+      populateBananaWall(600);
+      // brief ultra-fast sprinkle mode for chaos
+      const temp = setInterval(() => addBananas(30), 600);
+      setTimeout(() => clearInterval(temp), 4000);
+    }
+  });
 
   // Initial bananas for fun
-  addBananas(30);              // more sprinkles to start
-  populateBananaWall(160);     // a bigger initial banana wall
+  addBananas(40);              // more sprinkles to start
+  populateBananaWall(200);     // a bigger initial banana wall
+  setUnhinged(false);          // start tame
+  sprinkleInterval = setInterval(() => addBananas(10), 4200);
 
-  // Add more on button click
+  // Buttons
   if (addBtn) {
-    addBtn.addEventListener("click", () => addBananas(24));
+    addBtn.addEventListener("click", () => addBananas(28));
   }
-
-  // Load more bananas into the wall
   if (loadMoreBtn) {
-    loadMoreBtn.addEventListener("click", () => populateBananaWall(200));
+    loadMoreBtn.addEventListener("click", () => populateBananaWall(240));
   }
-
-  // Periodically add sprinkles for continuous fun
-  setInterval(() => addBananas(12), 3500);
+  if (toggleUnhingedBtn) {
+    toggleUnhingedBtn.addEventListener("click", () => setUnhinged(!unhinged));
+  }
 })();
