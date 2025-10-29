@@ -194,19 +194,34 @@ section {
   text-shadow: 0 0 10px rgba(61, 247, 255, 0.5);
 }
 
-/* Pear Hall of Fame */
-.pear-grid {
+/* Pineapple Hall of Fame */
+.pineapple-grid {
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
   justify-items: center;
 }
-.pear-hof h2 {
-  color: #e6ffc9;
-  text-shadow: 0 0 10px rgba(61, 247, 255, 0.4), 0 0 10px rgba(255, 63, 209, 0.35);
+.pineapple-hof h2 {
+  color: #ffe6c9;
+  text-shadow: 0 0 10px rgba(255, 63, 209, 0.5), 0 0 10px rgba(61, 247, 255, 0.45);
 }
-.pear-grid .fruit-emoji {
+.pineapple-grid .fruit-emoji {
   font-size: 3rem;
-  filter: drop-shadow(0 0 10px rgba(61, 247, 255, 0.5)) drop-shadow(0 0 16px rgba(255, 63, 209, 0.35));
+  filter: drop-shadow(0 0 10px rgba(255, 63, 209, 0.5)) drop-shadow(0 0 16px rgba(61, 247, 255, 0.35));
+}
+
+/* Mango Hall of Fame */
+.mango-grid {
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+.mango-hof h2 {
+  color: #ffd6a6;
+  text-shadow: 0 0 10px rgba(255, 63, 209, 0.45), 0 0 10px rgba(61, 247, 255, 0.45);
+}
+.mango-grid .fruit-emoji {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(255, 63, 209, 0.45)) drop-shadow(0 0 16px rgba(61, 247, 255, 0.35));
 }
 
 .cta ol {
@@ -243,7 +258,7 @@ footer {
   .hero {
     grid-template-columns: 1fr;
   }
-  .gallery .grid, .banana-grid, .apple-grid, .pear-grid {
+  .gallery .grid, .banana-grid, .apple-grid, .pineapple-grid, .mango-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .cards {
