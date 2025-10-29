@@ -194,6 +194,21 @@ section {
   text-shadow: 0 0 10px rgba(61, 247, 255, 0.5);
 }
 
+/* Pear Hall of Fame */
+.pear-grid {
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+.pear-hof h2 {
+  color: #e6ffc9;
+  text-shadow: 0 0 10px rgba(61, 247, 255, 0.4), 0 0 10px rgba(255, 63, 209, 0.35);
+}
+.pear-grid .fruit-emoji {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(61, 247, 255, 0.5)) drop-shadow(0 0 16px rgba(255, 63, 209, 0.35));
+}
+
 .cta ol {
   margin: 0.5rem 0 0.5rem 1.25rem;
 }
@@ -228,7 +243,7 @@ footer {
   .hero {
     grid-template-columns: 1fr;
   }
-  .gallery .grid, .banana-grid {
+  .gallery .grid, .banana-grid, .apple-grid, .pear-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .cards {
