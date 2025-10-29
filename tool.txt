@@ -1,0 +1,100 @@
+code_artefact tool specification
+
+Overview
+- Purpose: Create, modify, rename, or remove files using a content-based patch.
+- Input: A single string following a strict XML-like diff grammar.
+- Matching: The content in &lt;old_code&gt; must uniquely match the target file snippet (no line numbers).
+
+Wrapper format
+&lt;code_artefact format="find_replace" file_path="PATH/TO/FILE" type="TYPE"&gt;
+&lt;old_code&gt;
+...the exact existing snippet to replace...
+&lt;/old_code&gt;
+&lt;new_code&gt;
+...the new snippet or full file content...
+&lt;/new_code&gt;
+&lt;/code_artefact&gt;
+
+Attributes
+- format: must be "find_replace"
+- file_path: absolute or project-relative path to the file
+- type: one of "added" | "modified" | "renamed" | "removed"
+
+Behavior by type
+- added:
+  - Use to create a new file.
+  - &lt;old_code&gt; is left empty.
+  - &lt;new_code&gt; contains the full file content.
+- modified:
+  - Use to replace an existing snippet in a file.
+  - &lt;old_code&gt; must match exactly and uniquely in the file.
+  - &lt;new_code&gt; is the replacement content.
+  - To overwrite the entire file, leave &lt;old_code&gt; empty and put the full desired content in &lt;new_code&gt;.
+- renamed:
+  - Use to rename a file.
+  - Body contains the new filepath only (no &lt;old_code&gt;/&lt;new_code&gt;).
+- removed:
+  - Use to delete a file.
+  - No body is required (no &lt;old_code&gt;/&lt;new_code&gt;).
+
+Examples
+
+1) Modify a function snippet in an existing file
+&lt;code_artefact format="find_replace" file_path="src/utils/math.py" type="modified"&gt;
+&lt;old_code&gt;
+def add(a, b):
+    return a + b
+&lt;/old_code&gt;
+&lt;new_code&gt;
+def add(a, b):
+    # Allow floats and ints naturally; keep minimal logic
+    return a + b
+&lt;/new_code&gt;
+&lt;/code_artefact&gt;
+
+2) Add a brand new file
+&lt;code_artefact format="find_replace" file_path="src/config/settings.json" type="added"&gt;
+&lt;old_code&gt;
+&lt;/old_code&gt;
+&lt;new_code&gt;
+{
+  "env": "production",
+  "debug": false
+}
+&lt;/new_code&gt;
+&lt;/code_artefact&gt;
+
+3) Overwrite an entire file (full content replacement)
+&lt;code_artefact format="find_replace" file_path="index.html" type="modified"&gt;
+&lt;old_code&gt;
+&lt;/old_code&gt;
+&lt;new_code&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;New Site&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;Hello&lt;/body&gt;
+&lt;/html&gt;
+&lt;/new_code&gt;
+&lt;/code_artefact&gt;
+
+4) Rename a file
+&lt;code_artefact format="find_replace" file_path="src/old_name.py" type="renamed"&gt;
+src/new_name.py
+&lt;/code_artefact&gt;
+
+5) Remove a file
+&lt;code_artefact format="find_replace" file_path="src/temp.txt" type="removed"&gt;
+&lt;/code_artefact&gt;
+
+Guidelines and safeguards
+- Always read the target file first to ensure &lt;old_code&gt; matches (unless the file content was provided in the prompt).
+- Ensure the snippet in &lt;old_code&gt; is unique; expand context if necessary.
+- Maintain existing style patterns (indentation, quotes, comments) unless explicitly asked to change them.
+- Do not edit lockfiles or dependency versions unless requested.
+- Avoid embedding binary content (images/SVG/base64) unless explicitly requested.
+- Use one artefact per file; if you change multiple files, create multiple artefacts.
+
+Notes
+- This tool is content-based and does not rely on line numbers.
+- The platform validates that &lt;old_code&gt; exists in the file before replacing; if not, the call fails.
+- For new files or full overwrites, leaving &lt;old_code&gt; empty is the correct approach.

@@ -3,16 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Static Site</title>
+  <title>Bananas — A Delightfully Simple Guide</title>
+  <meta name="description" content="A simple, friendly guide to bananas: varieties, nutrition, ripeness, and easy recipes." />
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+  <header>
+    <div class="brand">🍌 Bananas</div>
+    <div class="banana-counter" aria-live="polite">Total bananas: <span id="banana-count">0</span></div>
+  </header>
+
   <main>
-    <h1>Welcome to Your Static Site</h1>
+    <section class="hero">
+      <h1>Bananas: sweet, portable, and full of goodness</h1>
+      <p>Explore varieties, nutrition, ripeness tips, and simple ways to enjoy bananas every day.</p>
+      <a class="cta" href="#recipes">See easy recipes</a>
+    </section>
+
+    <section class="controls card">
+      <h2>Unhinged Banana Mode</h2>
+      <p>Turn the obsession up to 11. Expect lots of bananas.</p>
+      <button id="toggle-unhinged" class="cta" type="button" aria-pressed="false">Activate Unhinged Mode</button>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Why bananas?</h2>
+        <p>Bananas are a convenient snack packed with potassium, vitamin B6, and fiber. They’re naturally sweet, easy to digest, and perfect for breakfast, pre-workout fuel, or dessert.</p>
+      </article>
+
+      <article class="card">
+        <h2>Popular varieties</h2>
+        <ul>
+          <li><strong>Cavendish</strong> — the classic supermarket banana: sweet and creamy.</li>
+          <li><strong>Plantain</strong> — starchy and best cooked; great for frying or baking.</li>
+          <li><strong>Lady Finger</strong> — small, extra sweet, lovely in fruit salads.</li>
+          <li><strong>Red Banana</strong> — slightly berry-like flavor with a reddish peel.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Ripeness guide</h2>
+        <p>Color tells the story:</p>
+        <ul class="ripeness">
+          <li><span class="tag tag-green">Green</span> — firm, less sweet; good for cooking or slicing.</li>
+          <li><span class="tag tag-yellow">Yellow</span> — sweet and creamy; perfect for snacking.</li>
+          <li><span class="tag tag-speckled">Speckled</span> — extra sweet; ideal for baking and smoothies.</li>
+        </ul>
+        <p class="tip">Pro tip: To slow ripening, refrigerate; the peel may darken, but the fruit stays fresh longer.</p>
+      </article>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Nutrition (per medium banana)</h2>
+        <ul>
+          <li>Calories: ~105</li>
+          <li>Carbs: ~27g (includes ~14g natural sugar)</li>
+          <li>Fiber: ~3g</li>
+          <li>Potassium: ~422mg</li>
+          <li>Vitamin B6: ~0.4mg</li>
+        </ul>
+        <p class="note">Values vary by size and variety. Source: USDA FoodData Central.</p>
+      </article>
+
+      <article class="card" id="recipes">
+        <h2>Easy recipes</h2>
+        <ol>
+          <li><strong>5‑minute banana smoothie</strong>: 1 banana + 1 cup milk (or oat milk) + ice. Blend.</li>
+          <li><strong>Peanut butter banana toast</strong>: toast + PB + sliced banana + cinnamon.</li>
+          <li><strong>Banana “nice” cream</strong>: freeze ripe bananas, blend till creamy; add cocoa or berries.</li>
+        </ol>
+        <p><a class="inline-link" href="https://fdc.nal.usda.gov/" target="_blank" rel="noopener">Learn more at USDA FoodData Central →</a></p>
+      </article>
+    </section>
+
+    <section class="card banana-showcase">
+      <h2>Even more bananas</h2>
+      <p>Here’s a cheerful gallery to celebrate the humble banana.</p>
+      <div class="banana-grid" aria-label="Banana gallery">
+        <span>🍌</span><span>🍌</span><span>🍌</span><span>🍌</span>
+        <span>🍌</span><span>🍌</span><span>🍌</span><span>🍌</span>
+        <span>🍌</span><span>🍌</span><span>🍌</span><span>🍌</span>
+        <span>🍌</span><span>🍌</span><span>🍌</span><span>🍌</span>
+      </div>
+      <button id="add-bananas" class="cta" type="button" aria-label="Add more bananas">Add more bananas</button>
+    </section>
+
+    <section class="card banana-wall">
+      <h2>Banana Wall</h2>
+      <p>A glorious wall of bananas! Scroll to behold the bounty.</p>
+      <div id="banana-wall" class="banana-wall-grid" aria-live="polite"></div>
+      <div class="banana-wall-actions">
+        <button id="load-more-bananas" class="cta" type="button" aria-label="Load more bananas">Load more bananas</button>
+      </div>
+    </section>
+
+    <section class="banana-marquee" aria-hidden="false" aria-label="Scrolling banana facts">
+      <div class="marquee-track">
+        <span>🍌 Bananas are berries.</span>
+        <span>🍌 Banana peels can be composted.</span>
+        <span>🍌 Ripe bananas sweeten smoothies naturally.</span>
+        <span>🍌 Plantains are bananas better cooked.</span>
+        <span>🍌 Freeze speckled bananas for baking.</span>
+        <span>🍌 Konami code unleashes a banana storm.</span>
+      </div>
+    </section>
+
+    <div class="banana-sprinkles" aria-hidden="true"></div>
   </main>
+
   <footer>
-    <p>&copy; 2025 Your Name</p>
+    <p>&copy; 2025 Banana Guide</p>
   </footer>
+
   <script src="assets/script.js"></script>
 </body>
 </html>
