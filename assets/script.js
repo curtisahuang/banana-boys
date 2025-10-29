@@ -40,18 +40,18 @@ if (btn) {
       setTimeout(() => bubble.remove(), 320);
     }, 3000);
 
-    // Fruit confetti: bananas, apples, pineapples, and mangoes for extra vibes
+    // Confetti: fruits + bamboo + pandas for extra vibes
     bananaConfetti();
   });
 }
 
-// Simple fruit confetti effect (bananas + apples + pineapples + mangoes)
+// Simple confetti effect (fruits + bamboo + pandas)
 function bananaConfetti() {
-  const count = 28;
-  const fruits = ["🍌", "🍎", "🍏", "🍍", "🥭"];
+  const count = 30;
+  const items = ["🍌", "🍎", "🍏", "🍍", "🥭", "🎋", "🐼"];
   for (let i = 0; i < count; i++) {
     const b = document.createElement("span");
-    b.textContent = fruits[Math.floor(Math.random() * fruits.length)];
+    b.textContent = items[Math.floor(Math.random() * items.length)];
     b.className = "banana-drop";
     b.style.left = Math.floor(Math.random() * 100) + "vw";
     b.style.fontSize = (18 + Math.random() * 18) + "px";
