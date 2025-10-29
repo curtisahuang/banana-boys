@@ -246,6 +246,21 @@ section {
   grid-template-columns: repeat(4, 1fr);
 }
 
+/* Taco Hall of Fame */
+.taco-grid {
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+.taco-hof h2 {
+  color: #ffc9d6;
+  text-shadow: 0 0 10px rgba(255, 99, 132, 0.55), 0 0 10px rgba(61, 247, 255, 0.35);
+}
+.taco-grid .fruit-emoji {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(255, 99, 132, 0.55)) drop-shadow(0 0 16px rgba(61, 247, 255, 0.35));
+}
+
 
 .bamboo-hof h2 {
   color: #c9ffd9;
@@ -360,7 +375,7 @@ footer {
   .hero {
     grid-template-columns: 1fr;
   }
-  .gallery .grid, .banana-grid, .apple-grid, .pineapple-grid, .mango-grid, .durian-grid, .bamboo-grid, .banana-parade-grid, .banana-supermix-grid, .burrito-grid {
+  .gallery .grid, .banana-grid, .apple-grid, .pineapple-grid, .mango-grid, .durian-grid, .bamboo-grid, .banana-parade-grid, .banana-supermix-grid, .taco-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .cards {

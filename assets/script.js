@@ -82,14 +82,14 @@ if (btn) {
       setTimeout(() => bubble.remove(), 320);
     }, 3000);
 
-    // Confetti: fruits + bamboo (no burritos), heavy on bananas, chilies tuned by spice level
+    // Confetti: fruits + bamboo (no burritos), heavy on bananas, tacos sprinkled in, chilies tuned by spice level
     bananaConfetti();
   });
 }
 
-// Confetti effect (fruits + bamboo + chilies tuned by spiceLevel; no burritos)
+// Confetti effect (fruits + bamboo + tacos + chilies tuned by spiceLevel; no burritos)
 function bananaConfetti() {
-  const base = ["🍌","🍌","🍌","🍌","🍎","🍏","🍍","🥭","🎋","🍌","🍌","🍌"];
+  const base = ["🍌","🍌","🍌","🍌","🍎","🍏","🍍","🥭","🎋","🍌","🍌","🍌","🌮"];
   let chilies = 4;
   if (spiceLevel === "mild") chilies = 1;
   else if (spiceLevel === "medium") chilies = 3;
