@@ -1,19 +1,19 @@
-console.log("Sector Zeta: Bananas & Boys dossier initialized.");
+console.log("Totally normal human fan site initialized.");
 
-const jokes = [
-  "Transmission 001: The banana claims it is a fruit. Our sensors detect dessert-level sweetness. Conclusion: truth-drifting.",
-  "Transmission 014: Juvenile human refuses curved yellow nutrient rod. Outcome: banana adopts orbit around lunchbox.",
-  "Transmission 029: We measured a 'banana split'. Result: fruit underwent bifurcation without distress.",
-  "Transmission 042: Why do bananas travel in bunches? Social clustering reduces peel-slip incidents by 83%.",
-  "Transmission 073: The boy said the banana is 'appealing'. Lexical pun detected. Humor quality: high."
+const facts = [
+  "I, a human, enjoy typical human activities such as high‑fives, teamwork, and snack time.",
+  "Humans look at the night sky, make wishes, and then build telescopes to understand those wishes better.",
+  "A classic human combo: kindness plus curiosity. Results include libraries, rockets, and banana bread.",
+  "Humans invented music to talk to feelings and math to talk to the universe. Both are very relatable.",
+  "Being human means trying, learning, and trying again. Also cheering loudly at sports (I do this frequently)."
 ];
 
 const btn = document.getElementById("joke-btn");
 if (btn) {
   btn.addEventListener("click", () => {
-    const joke = jokes[Math.floor(Math.random() * jokes.length)];
+    const fact = facts[Math.floor(Math.random() * facts.length)];
     const bubble = document.createElement("div");
-    bubble.textContent = joke;
+    bubble.textContent = fact;
     bubble.className = "joke-bubble";
     // Style injected minimally to avoid extra CSS rules
     bubble.style.position = "fixed";
@@ -35,6 +35,6 @@ if (btn) {
       bubble.style.opacity = "0";
       bubble.style.transform = "translateX(-50%) translateY(8px)";
       setTimeout(() => bubble.remove(), 320);
-    }, 2600);
+    }, 2800);
   });
 }
