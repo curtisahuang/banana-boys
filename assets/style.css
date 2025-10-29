@@ -245,6 +245,21 @@ section {
 .bamboo-grid {
   grid-template-columns: repeat(4, 1fr);
 }
+
+/* Burrito Hall of Fame */
+.burrito-grid {
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+.burrito-hof h2 {
+  color: #ffd9bf;
+  text-shadow: 0 0 10px rgba(255, 153, 102, 0.55), 0 0 10px rgba(61, 247, 255, 0.35);
+}
+.burrito-grid .fruit-emoji {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(255, 153, 102, 0.55)) drop-shadow(0 0 16px rgba(61, 247, 255, 0.35));
+}
 .bamboo-hof h2 {
   color: #c9ffd9;
   text-shadow: 0 0 10px rgba(61, 247, 255, 0.5), 0 0 10px rgba(255, 63, 209, 0.35);
@@ -324,7 +339,7 @@ footer {
   .hero {
     grid-template-columns: 1fr;
   }
-  .gallery .grid, .banana-grid, .apple-grid, .pineapple-grid, .mango-grid, .durian-grid, .bamboo-grid, .banana-parade-grid, .banana-supermix-grid {
+  .gallery .grid, .banana-grid, .apple-grid, .pineapple-grid, .mango-grid, .durian-grid, .bamboo-grid, .banana-parade-grid, .banana-supermix-grid, .burrito-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .cards {
