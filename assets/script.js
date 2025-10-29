@@ -40,15 +40,15 @@ if (btn) {
       setTimeout(() => bubble.remove(), 320);
     }, 3000);
 
-    // Fruit confetti: bananas, apples, and pears for extra vibes
+    // Fruit confetti: bananas, apples, and pineapples for extra vibes
     bananaConfetti();
   });
 }
 
-// Simple fruit confetti effect (bananas + apples + pears)
+// Simple fruit confetti effect (bananas + apples + pineapples)
 function bananaConfetti() {
   const count = 28;
-  const fruits = ["🍌", "🍎", "🍏", "🍐"];
+  const fruits = ["🍌", "🍎", "🍏", "🍍"];
   for (let i = 0; i < count; i++) {
     const b = document.createElement("span");
     b.textContent = fruits[Math.floor(Math.random() * fruits.length)];
