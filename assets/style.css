@@ -261,6 +261,23 @@ section {
   filter: drop-shadow(0 0 10px rgba(255, 99, 132, 0.55)) drop-shadow(0 0 16px rgba(61, 247, 255, 0.35));
 }
 
+/* Taco Fiesta Gallery */
+.taco-fiesta-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+.taco-fiesta h2 {
+  color: #ffd6c9;
+  text-shadow: 0 0 10px rgba(255, 154, 63, 0.55), 0 0 10px rgba(61, 247, 255, 0.35);
+}
+.taco-fiesta-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(255, 154, 63, 0.25);
+  filter: saturate(1.1) contrast(1.05);
+}
+
 /* Guacamole Hall of Fame */
 .guac-grid {
   grid-template-columns: repeat(4, 1fr);
@@ -407,7 +424,7 @@ footer {
   .hero {
     grid-template-columns: 1fr;
   }
-  .gallery .grid, .banana-grid, .apple-grid, .pineapple-grid, .mango-grid, .durian-grid, .bamboo-grid, .banana-parade-grid, .banana-supermix-grid, .taco-grid, .guac-grid, .chips-salsa-grid {
+  .gallery .grid, .banana-grid, .apple-grid, .pineapple-grid, .mango-grid, .durian-grid, .bamboo-grid, .banana-parade-grid, .banana-supermix-grid, .taco-grid, .taco-fiesta-grid, .guac-grid, .chips-salsa-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .cards {

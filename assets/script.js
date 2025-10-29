@@ -89,7 +89,7 @@ if (btn) {
 
 // Confetti effect (fruits + bamboo + tacos + avocado + tomatoes; chilies tuned by spiceLevel; no burritos)
 function bananaConfetti() {
-  const base = ["🍌","🍌","🍌","🍌","🍎","🍏","🍍","🥭","🎋","🍌","🍌","🍌","🌮","🥑","🍅"];
+  const base = ["🍌","🍌","🍌","🍌","🍎","🍏","🍍","🥭","🎋","🍌","🍌","🍌","🌮","🥑","🍅","🌮","🌮"];
   let chilies = 4;
   if (spiceLevel === "mild") chilies = 1;
   else if (spiceLevel === "medium") chilies = 3;
