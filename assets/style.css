@@ -52,6 +52,28 @@ header p {
   color: #bfe8ff;
 }
 
+/* Banana marquee strip */
+.banana-strip {
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 63, 209, 0.25);
+  border-bottom: 1px solid rgba(61, 247, 255, 0.25);
+  margin-top: 0.75rem;
+}
+.banana-track {
+  display: inline-flex;
+  gap: 0.35rem;
+  padding: 0.35rem 0;
+  animation: banana-scroll 20s linear infinite;
+}
+.banana {
+  filter: drop-shadow(0 0 6px rgba(255, 63, 209, 0.45));
+  font-size: 1.15rem;
+}
+@keyframes banana-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 main {
   flex: 1 0 auto;
   max-width: 1100px;
@@ -154,6 +176,15 @@ section {
   box-shadow: 0 0 18px rgba(167, 108, 255, 0.25);
 }
 
+/* Banana Hall of Fame */
+.banana-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+.banana-hof h2 {
+  color: #e6c9ff;
+  text-shadow: 0 0 10px rgba(255, 63, 209, 0.5);
+}
+
 .cta ol {
   margin: 0.5rem 0 0.5rem 1.25rem;
 }
@@ -169,11 +200,26 @@ footer {
   border-top: 1px solid rgba(255, 63, 209, 0.25);
 }
 
+/* Banana confetti (created in JS) */
+.banana-drop {
+  position: fixed;
+  top: -40px;
+  will-change: transform, opacity;
+  pointer-events: none;
+  animation-name: banana-fall;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+@keyframes banana-fall {
+  0% { transform: translateY(-40px) rotate(0deg); opacity: 0.9; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0.95; }
+}
+
 @media (max-width: 950px) {
   .hero {
     grid-template-columns: 1fr;
   }
-  .gallery .grid {
+  .gallery .grid, .banana-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .cards {

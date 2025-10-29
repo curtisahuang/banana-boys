@@ -39,7 +39,25 @@ if (btn) {
       bubble.style.transform = "translateX(-50%) translateY(8px)";
       setTimeout(() => bubble.remove(), 320);
     }, 3000);
+
+    // Banana confetti for extra banana vibes
+    bananaConfetti();
   });
-}, 3000);
-  });
+}
+
+// Simple banana confetti effect
+function bananaConfetti() {
+  const count = 24;
+  for (let i = 0; i < count; i++) {
+    const b = document.createElement("span");
+    b.textContent = "🍌";
+    b.className = "banana-drop";
+    b.style.left = Math.floor(Math.random() * 100) + "vw";
+    b.style.fontSize = (18 + Math.random() * 18) + "px";
+    b.style.animationDuration = (2.4 + Math.random() * 1.2) + "s";
+    b.style.animationDelay = (Math.random() * 0.6) + "s";
+    document.body.appendChild(b);
+    const total = parseFloat(b.style.animationDuration) + parseFloat(b.style.animationDelay);
+    setTimeout(() => b.remove(), (total + 0.4) * 1000);
+  }
 }
