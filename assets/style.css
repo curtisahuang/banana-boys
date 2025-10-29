@@ -5,11 +5,11 @@ html, body {
 }
 
 :root {
-  --bg: #fffdf5;
-  --ink: #222;
-  --banana: #ffd54f;
-  --banana-dark: #ffb300;
-  --accent: #2f3640;
+  --bg: #fbfff6;
+  --ink: #1e2129;
+  --banana: #eaff4f;      /* extraterrestrial neon banana */
+  --banana-dark: #c9e600;
+  --accent: #2b195b;      /* deep space violet */
 }
 
 body {

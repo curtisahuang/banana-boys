@@ -1,11 +1,11 @@
-console.log("Bananas & Boys loaded!");
+console.log("Sector Zeta: Bananas & Boys dossier initialized.");
 
 const jokes = [
-  "Why did the banana go to the doctor? It wasn’t peeling well.",
-  "What do you call two bananas? A pair of slippers.",
-  "Why did the boy bring a banana to class? He wanted to ace ‘peels’ and valves.",
-  "What’s a banana’s favorite gym move? The split.",
-  "Why don’t bananas ever feel lonely? They hang out in bunches."
+  "Transmission 001: The banana claims it is a fruit. Our sensors detect dessert-level sweetness. Conclusion: truth-drifting.",
+  "Transmission 014: Juvenile human refuses curved yellow nutrient rod. Outcome: banana adopts orbit around lunchbox.",
+  "Transmission 029: We measured a 'banana split'. Result: fruit underwent bifurcation without distress.",
+  "Transmission 042: Why do bananas travel in bunches? Social clustering reduces peel-slip incidents by 83%.",
+  "Transmission 073: The boy said the banana is 'appealing'. Lexical pun detected. Humor quality: high."
 ];
 
 const btn = document.getElementById("joke-btn");
@@ -21,7 +21,7 @@ if (btn) {
     bubble.style.bottom = "28px";
     bubble.style.transform = "translateX(-50%)";
     bubble.style.background = "#fff";
-    bubble.style.border = "2px solid rgba(0,0,0,0.08)";
+    bubble.style.border = "2px solid rgba(43, 25, 91, 0.25)";
     bubble.style.borderRadius = "14px";
     bubble.style.padding = "0.65rem 0.9rem";
     bubble.style.boxShadow = "0 6px 20px rgba(0,0,0,0.12)";
