@@ -224,6 +224,23 @@ section {
   filter: drop-shadow(0 0 10px rgba(255, 63, 209, 0.45)) drop-shadow(0 0 16px rgba(61, 247, 255, 0.35));
 }
 
+/* Durian Hall of Fame */
+.durian-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+.durian-hof h2 {
+  color: #e9ffbf;
+  text-shadow: 0 0 10px rgba(61, 247, 255, 0.45), 0 0 10px rgba(255, 63, 209, 0.35);
+}
+.durian-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(167, 108, 255, 0.25);
+  filter: saturate(1.15) contrast(1.05);
+}
+
 .cta ol {
   margin: 0.5rem 0 0.5rem 1.25rem;
 }
@@ -258,7 +275,7 @@ footer {
   .hero {
     grid-template-columns: 1fr;
   }
-  .gallery .grid, .banana-grid, .apple-grid, .pineapple-grid, .mango-grid {
+  .gallery .grid, .banana-grid, .apple-grid, .pineapple-grid, .mango-grid, .durian-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .cards {
