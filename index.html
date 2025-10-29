@@ -252,6 +252,20 @@
     <section class="recipe">
       <h2>Spicy Burrito Recipe</h2>
       <p>A neon-fueled, portable meal with heat and balance.</p>
+
+      <div class="spice-controls">
+        <h3>Spice level</h3>
+        <div class="spice-buttons">
+          <button class="btn level-btn" data-level="mild">Mild</button>
+          <button class="btn level-btn" data-level="medium">Medium</button>
+          <button class="btn level-btn" data-level="spicy">Spicy</button>
+        </div>
+        <div class="heat-meter" aria-label="Heat meter">
+          <div class="heat-bar" id="heat-bar"></div>
+        </div>
+        <p id="spice-note">Balanced heat: add more chili for kick, more avocado/yogurt to cool.</p>
+      </div>
+
       <div class="recipe-grid">
         <div>
           <h3>Ingredients</h3>
@@ -260,8 +274,8 @@
             <li>1 cup cooked rice</li>
             <li>1 cup black beans (rinsed)</li>
             <li>1/2 cup sautéed peppers and onions</li>
-            <li>1–2 fresh jalapeños, sliced</li>
-            <li>2–3 tbsp chipotle sauce or hot salsa 🌶️</li>
+            <li><span id="jalapeno-amount">1–2</span> fresh jalapeños, sliced</li>
+            <li><span id="sauce-amount">2–3 tbsp</span> chipotle sauce or hot salsa 🌶️</li>
             <li>Avocado or yogurt for creaminess (optional)</li>
             <li>Grated cheese (optional)</li>
             <li>Lime wedges + cilantro</li>

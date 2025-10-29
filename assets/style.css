@@ -305,6 +305,40 @@ section {
   filter: saturate(1.15) contrast(1.05);
 }
 
+/* Spice controls */
+.spice-controls {
+  margin: 0.75rem 0 1rem;
+}
+.spice-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.level-btn {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.9rem;
+}
+.level-btn.active {
+  filter: brightness(1.15);
+  box-shadow: 0 0 22px rgba(255, 63, 209, 0.5), 0 0 28px rgba(61, 247, 255, 0.45);
+}
+.heat-meter {
+  width: 100%;
+  height: 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  margin-top: 0.5rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 63, 209, 0.25);
+}
+.heat-bar {
+  height: 100%;
+  width: 50%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #3df7ff, #ff3fd1);
+  box-shadow: 0 0 12px rgba(255, 63, 209, 0.35);
+  transition: width 220ms ease, background 220ms ease;
+}
+
 .cta ol {
   margin: 0.5rem 0 0.5rem 1.25rem;
 }

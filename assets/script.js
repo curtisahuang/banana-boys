@@ -8,6 +8,48 @@ const facts = [
   "Being human means trying, learning, trying again—then cheering loudly at sports (I do that frequently)."
 ];
 
+let spiceLevel = "medium";
+
+const spiceButtons = Array.from(document.querySelectorAll(".level-btn"));
+const heatBar = document.getElementById("heat-bar");
+const sauceAmount = document.getElementById("sauce-amount");
+const jalapenoAmount = document.getElementById("jalapeno-amount");
+const spiceNote = document.getElementById("spice-note");
+
+function setSpice(level) {
+  spiceLevel = level;
+  spiceButtons.forEach(b => b.classList.toggle("active", b.dataset.level === level));
+
+  if (level === "mild") {
+    sauceAmount.textContent = "1 tbsp";
+    jalapenoAmount.textContent = "0–1";
+    heatBar.style.width = "25%";
+    heatBar.style.background = "linear-gradient(90deg, #3df7ff, #a6ffe0)";
+    spiceNote.textContent = "Mild and friendly: smooth heat, extra avocado/yogurt recommended.";
+  } else if (level === "medium") {
+    sauceAmount.textContent = "2–3 tbsp";
+    jalapenoAmount.textContent = "1–2";
+    heatBar.style.width = "55%";
+    heatBar.style.background = "linear-gradient(90deg, #3df7ff, #ff9a3f)";
+    spiceNote.textContent = "Balanced heat: add more chili for kick, more avocado/yogurt to cool.";
+  } else {
+    // spicy
+    sauceAmount.textContent = "3–4 tbsp+";
+    jalapenoAmount.textContent = "2–3";
+    heatBar.style.width = "85%";
+    heatBar.style.background = "linear-gradient(90deg, #ff3fd1, #ff3f3f)";
+    spiceNote.textContent = "Spicy mode: bold chili presence, balance with lime and creaminess.";
+  }
+}
+
+// initialize spice controls
+if (spiceButtons.length) {
+  setSpice(spiceLevel);
+  spiceButtons.forEach(b => {
+    b.addEventListener("click", () => setSpice(b.dataset.level));
+  });
+}
+
 const btn = document.getElementById("joke-btn");
 if (btn) {
   btn.addEventListener("click", () => {
@@ -40,15 +82,20 @@ if (btn) {
       setTimeout(() => bubble.remove(), 320);
     }, 3000);
 
-    // Confetti: fruits + bamboo + burritos (still heavy on bananas)
+    // Confetti: adjust chili density by spice level
     bananaConfetti();
   });
 }
 
-// Simple confetti effect (fruits + bamboo + burritos)
+// Confetti effect (fruits + bamboo + burritos + chilies tuned by spiceLevel)
 function bananaConfetti() {
-  const count = 52;
-  const items = ["🍌","🍌","🍌","🍌","🍎","🍏","🍍","🥭","🎋","🌯","🍌","🍌","🍌"];
+  const base = ["🍌","🍌","🍌","🍌","🍎","🍏","🍍","🥭","🎋","🌯","🍌","🍌","🍌"];
+  let chilies = 4;
+  if (spiceLevel === "mild") chilies = 1;
+  else if (spiceLevel === "medium") chilies = 3;
+  else chilies = 7;
+  const items = base.concat(Array(chilies).fill("🌶️"));
+  const count = 52 + chilies;
   for (let i = 0; i < count; i++) {
     const b = document.createElement("span");
     b.textContent = items[Math.floor(Math.random() * items.length)];
