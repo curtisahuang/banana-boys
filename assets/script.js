@@ -40,15 +40,15 @@ if (btn) {
       setTimeout(() => bubble.remove(), 320);
     }, 3000);
 
-    // Confetti: fruits + bamboo (more bananas!)
+    // Confetti: fruits + bamboo (even more bananas!)
     bananaConfetti();
   });
 }
 
-// Simple confetti effect (fruits + bamboo, no pandas)
+// Simple confetti effect (fruits + bamboo, heavy on bananas)
 function bananaConfetti() {
-  const count = 32;
-  const items = ["🍌", "🍌", "🍎", "🍏", "🍍", "🥭", "🎋", "🍌"];
+  const count = 48;
+  const items = ["🍌","🍌","🍌","🍌","🍎","🍏","🍍","🥭","🎋","🍌","🍌","🍌"];
   for (let i = 0; i < count; i++) {
     const b = document.createElement("span");
     b.textContent = items[Math.floor(Math.random() * items.length)];

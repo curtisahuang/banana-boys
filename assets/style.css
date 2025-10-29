@@ -260,7 +260,7 @@ section {
 
 /* Banana Parade */
 .banana-parade-grid {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   align-items: center;
   justify-items: center;
 }
@@ -271,6 +271,23 @@ section {
 .banana-parade-grid .fruit-emoji {
   font-size: 3rem;
   filter: drop-shadow(0 0 10px rgba(255, 223, 88, 0.55)) drop-shadow(0 0 16px rgba(61, 247, 255, 0.35));
+}
+
+/* Banana Supermix */
+.banana-supermix-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+.banana-supermix h2 {
+  color: #ffeec9;
+  text-shadow: 0 0 10px rgba(255, 223, 88, 0.55), 0 0 10px rgba(61, 247, 255, 0.35);
+}
+.banana-supermix-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(255, 223, 88, 0.25);
+  filter: saturate(1.15) contrast(1.05);
 }
 
 .cta ol {
@@ -307,7 +324,7 @@ footer {
   .hero {
     grid-template-columns: 1fr;
   }
-  .gallery .grid, .banana-grid, .apple-grid, .pineapple-grid, .mango-grid, .durian-grid, .bamboo-grid, .banana-parade-grid {
+  .gallery .grid, .banana-grid, .apple-grid, .pineapple-grid, .mango-grid, .durian-grid, .bamboo-grid, .banana-parade-grid, .banana-supermix-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .cards {
