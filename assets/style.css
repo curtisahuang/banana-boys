@@ -4,59 +4,436 @@ html, body {
   padding: 0;
 }
 
+:root {
+  --bg: #0d0f1a;
+  --ink: #e9f1ff;
+  --neon-pink: #ff3fd1;
+  --neon-cyan: #3df7ff;
+  --neon-purple: #a76cff;
+  --panel: rgba(14, 16, 30, 0.8);
+}
+
 body {
   height: 100vh;
-  font-family: system-ui, sans-serif;
+  font-family: "Audiowide", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   margin: 0;
-  background: linear-gradient(120deg, #f8fafc 70%, #e7eaf2 100%);
-  color: #222;
+  color: var(--ink);
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background:
+    radial-gradient(1000px 400px at 50% -5%, rgba(255, 63, 209, 0.15), transparent 55%),
+    radial-gradient(800px 300px at 10% 120%, rgba(61, 247, 255, 0.12), transparent 60%),
+    linear-gradient(180deg, #0a0c17 0%, #0d0f1a 30%, #0d0f1a 100%);
+  position: relative;
 }
 
 header {
-  background: #23272f;
-  color: #fff;
+  background: linear-gradient(90deg, rgba(255, 63, 209, 0.25), rgba(61, 247, 255, 0.25));
+  color: var(--ink);
   padding: 1.2rem 0 1.2rem;
   text-align: center;
-  letter-spacing: 0.02em;
-  box-shadow: 0 2px 10px rgba(40,40,40,0.04);
+  letter-spacing: 0.04em;
+  box-shadow: 0 0 24px rgba(255, 63, 209, 0.25), 0 0 18px rgba(61, 247, 255, 0.2);
+  border-bottom: 1px solid rgba(167, 108, 255, 0.35);
+}
+
+header h1 {
+  margin: 0;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(61, 247, 255, 0.6), 0 0 18px rgba(255, 63, 209, 0.35);
+}
+
+header p {
+  margin: 0.25rem 0 0;
+  opacity: 0.95;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.8rem;
+  color: #bfe8ff;
+}
+
+/* Banana marquee strip */
+.banana-strip {
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 63, 209, 0.25);
+  border-bottom: 1px solid rgba(61, 247, 255, 0.25);
+  margin-top: 0.75rem;
+}
+.banana-track {
+  display: inline-flex;
+  gap: 0.35rem;
+  padding: 0.35rem 0;
+  animation: banana-scroll 20s linear infinite;
+}
+.banana {
+  filter: drop-shadow(0 0 6px rgba(255, 63, 209, 0.45));
+  font-size: 1.15rem;
+}
+@keyframes banana-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 main {
   flex: 1 0 auto;
-  max-width: 750px;
+  max-width: 1100px;
   width: 100%;
-  margin: 2.2rem auto 0 auto;
-  background: #fff;
-  padding: 2.8rem 2.2rem 2.4rem;
-  border-radius: 18px;
-  box-shadow: 0 6px 32px 0 rgba(42,54,96,0.07), 0 1.5px 6px 0 rgba(0,0,0,0.03);
+  margin: 2rem auto 0 auto;
+  padding: 0 1rem 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: 65vh;
-  position: relative;
+  gap: 2rem;
   overflow-y: auto;
 }
 
+section {
+  background: var(--panel);
+  backdrop-filter: blur(6px);
+  padding: 1.5rem;
+  border-radius: 18px;
+  box-shadow:
+    0 0 24px rgba(61, 247, 255, 0.08),
+    inset 0 0 0 1px rgba(167, 108, 255, 0.25);
+  border: 1px solid rgba(255, 63, 209, 0.1);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.hero-content h2 {
+  margin-top: 0;
+  text-shadow: 0 0 12px rgba(255, 63, 209, 0.4);
+}
+
+.hero-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 0 22px rgba(255, 63, 209, 0.25), 0 0 16px rgba(61, 247, 255, 0.18);
+  filter: saturate(1.2) contrast(1.05);
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 0.9rem;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+  color: #0a0c17;
+  border: 1px solid rgba(167, 108, 255, 0.45);
+  border-radius: 999px;
+  padding: 0.7rem 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 16px rgba(61, 247, 255, 0.45), 0 0 22px rgba(255, 63, 209, 0.35);
+  transition: transform 0.08s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+  box-shadow: 0 0 22px rgba(61, 247, 255, 0.6), 0 0 28px rgba(255, 63, 209, 0.5);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  border-radius: 14px;
+  padding: 1rem;
+  background:
+    linear-gradient(180deg, rgba(167, 108, 255, 0.16), rgba(14, 16, 30, 0.75));
+  box-shadow: inset 0 0 0 2px rgba(61, 247, 255, 0.12);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #e6c9ff;
+  text-shadow: 0 0 10px rgba(167, 108, 255, 0.5);
+}
+
+.facts {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.gallery .grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.gallery img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(167, 108, 255, 0.25);
+}
+
+/* Banana Hall of Fame */
+.banana-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+.banana-hof h2 {
+  color: #e6c9ff;
+  text-shadow: 0 0 10px rgba(255, 63, 209, 0.5);
+}
+
+/* Apple Hall of Fame */
+.apple-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+.apple-hof h2 {
+  color: #c9ffe6;
+  text-shadow: 0 0 10px rgba(61, 247, 255, 0.5);
+}
+
+/* Pineapple Hall of Fame */
+.pineapple-grid {
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+.pineapple-hof h2 {
+  color: #ffe6c9;
+  text-shadow: 0 0 10px rgba(255, 63, 209, 0.5), 0 0 10px rgba(61, 247, 255, 0.45);
+}
+.pineapple-grid .fruit-emoji {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(255, 63, 209, 0.5)) drop-shadow(0 0 16px rgba(61, 247, 255, 0.35));
+}
+
+/* Mango Hall of Fame */
+.mango-grid {
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+.mango-hof h2 {
+  color: #ffd6a6;
+  text-shadow: 0 0 10px rgba(255, 63, 209, 0.45), 0 0 10px rgba(61, 247, 255, 0.45);
+}
+.mango-grid .fruit-emoji {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(255, 63, 209, 0.45)) drop-shadow(0 0 16px rgba(61, 247, 255, 0.35));
+}
+
+/* Durian Hall of Fame */
+.durian-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+.durian-hof h2 {
+  color: #e9ffbf;
+  text-shadow: 0 0 10px rgba(61, 247, 255, 0.45), 0 0 10px rgba(255, 63, 209, 0.35);
+}
+.durian-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(167, 108, 255, 0.25);
+  filter: saturate(1.15) contrast(1.05);
+}
+
+/* Bamboo Grove */
+.bamboo-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Taco Hall of Fame */
+.taco-grid {
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+.taco-hof h2 {
+  color: #ffc9d6;
+  text-shadow: 0 0 10px rgba(255, 99, 132, 0.55), 0 0 10px rgba(61, 247, 255, 0.35);
+}
+.taco-grid .fruit-emoji {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(255, 99, 132, 0.55)) drop-shadow(0 0 16px rgba(61, 247, 255, 0.35));
+}
+
+/* Taco Fiesta Gallery */
+.taco-fiesta-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+.taco-fiesta h2 {
+  color: #ffd6c9;
+  text-shadow: 0 0 10px rgba(255, 154, 63, 0.55), 0 0 10px rgba(61, 247, 255, 0.35);
+}
+.taco-fiesta-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(255, 154, 63, 0.25);
+  filter: saturate(1.1) contrast(1.05);
+}
+
+/* Guacamole Hall of Fame */
+.guac-grid {
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+.guac-hof h2 {
+  color: #c9ffd9;
+  text-shadow: 0 0 10px rgba(102, 255, 153, 0.55), 0 0 10px rgba(61, 247, 255, 0.35);
+}
+.guac-grid .fruit-emoji {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(102, 255, 153, 0.55)) drop-shadow(0 0 16px rgba(61, 247, 255, 0.35));
+}
+
+/* Chips & Salsa Hall of Fame */
+.chips-salsa-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+.chips-salsa-hof h2 {
+  color: #ffc9a6;
+  text-shadow: 0 0 10px rgba(255, 154, 63, 0.55), 0 0 10px rgba(61, 247, 255, 0.35);
+}
+.chips-salsa-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(255, 154, 63, 0.25);
+  filter: saturate(1.1) contrast(1.05);
+}
+
+
+.bamboo-hof h2 {
+  color: #c9ffd9;
+  text-shadow: 0 0 10px rgba(61, 247, 255, 0.5), 0 0 10px rgba(255, 63, 209, 0.35);
+}
+.bamboo-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(61, 247, 255, 0.25);
+  filter: saturate(1.2) contrast(1.05);
+}
+
+/* Banana Parade */
+.banana-parade-grid {
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+.banana-parade h2 {
+  color: #fff3c9;
+  text-shadow: 0 0 10px rgba(255, 223, 88, 0.6), 0 0 10px rgba(61, 247, 255, 0.35);
+}
+.banana-parade-grid .fruit-emoji {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(255, 223, 88, 0.55)) drop-shadow(0 0 16px rgba(61, 247, 255, 0.35));
+}
+
+/* Banana Supermix */
+.banana-supermix-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+.banana-supermix h2 {
+  color: #ffeec9;
+  text-shadow: 0 0 10px rgba(255, 223, 88, 0.55), 0 0 10px rgba(61, 247, 255, 0.35);
+}
+.banana-supermix-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(255, 223, 88, 0.25);
+  filter: saturate(1.15) contrast(1.05);
+}
+
+/* Spice controls */
+.spice-controls {
+  margin: 0.75rem 0 1rem;
+}
+.spice-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.level-btn {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.9rem;
+}
+.level-btn.active {
+  filter: brightness(1.15);
+  box-shadow: 0 0 22px rgba(255, 63, 209, 0.5), 0 0 28px rgba(61, 247, 255, 0.45);
+}
+.heat-meter {
+  width: 100%;
+  height: 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  margin-top: 0.5rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 63, 209, 0.25);
+}
+.heat-bar {
+  height: 100%;
+  width: 50%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #3df7ff, #ff3fd1);
+  box-shadow: 0 0 12px rgba(255, 63, 209, 0.35);
+  transition: width 220ms ease, background 220ms ease;
+}
+
+.cta ol {
+  margin: 0.5rem 0 0.5rem 1.25rem;
+}
+
 footer {
-  background: #23272f;
-  color: #fff;
+  background: transparent;
+  color: var(--ink);
   text-align: center;
   padding: 1.25rem 0;
   margin-top: 2.4rem;
-  border-radius: 0 0 18px 18px;
-  font-size: 1rem;
-  box-shadow: 0 -2px 12px 0 rgba(40,40,40,0.06);
-  flex-shrink: 0;
+  font-size: 0.95rem;
+  text-shadow: 0 0 10px rgba(61, 247, 255, 0.35);
+  border-top: 1px solid rgba(255, 63, 209, 0.25);
 }
 
-@media (max-width: 850px) {
-  main {
-    max-width: 98vw;
-    padding: 1.2rem 1rem 1.3rem;
-  }
+/* Banana confetti (created in JS) */
+.banana-drop {
+  position: fixed;
+  top: -40px;
+  will-change: transform, opacity;
+  pointer-events: none;
+  animation-name: banana-fall;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+@keyframes banana-fall {
+  0% { transform: translateY(-40px) rotate(0deg); opacity: 0.9; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0.95; }
+}
 
+@media (max-width: 950px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .gallery .grid, .banana-grid, .apple-grid, .pineapple-grid, .mango-grid, .durian-grid, .bamboo-grid, .banana-parade-grid, .banana-supermix-grid, .taco-grid, .taco-fiesta-grid, .guac-grid, .chips-salsa-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery img {
+    height: 140px;
+  }
 }
